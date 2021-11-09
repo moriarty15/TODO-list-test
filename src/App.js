@@ -27,6 +27,8 @@ function App() {
     window.localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
+  const countCompletedToDo = todos.filter(({completed}) => completed === true)
+
   return (
     <div className="App">
       <div className="container">
@@ -35,6 +37,8 @@ function App() {
           todos={todos}
           setTodos={setTodos}
         />
+        <p>Общее кол-во ToDo: {todos.length}</p>
+        <p>Кол-во выполненых ToDo: {countCompletedToDo.length}</p>
         <TodosList
           todos={todos}
           setTodos={setTodos}
