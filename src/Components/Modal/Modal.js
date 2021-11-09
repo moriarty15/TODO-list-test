@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import style from "./Modal.module.css";
 const modalRoot = document.getElementById("modal-root");
 
