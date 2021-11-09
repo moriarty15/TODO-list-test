@@ -1,6 +1,6 @@
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import style from "./Modal.module.css";
 const modalRoot = document.getElementById("modal-root");
 
@@ -12,6 +12,20 @@ export default function Modal({
   toggleModal,
 }) {
   const [changeTodo, setChangeTodo] = useState(context);
+
+  useEffect(() => {
+    window.addEventListener('keydown', closeModalEsc)
+    return ()=>{window.removeEventListener('keydown', closeModalEsc)}
+  })
+
+  const closeModalEsc = e => {
+    if (e.code === "Escape") {toggleModal()}
+  }
+
+  const closeModalByClickBackDrop = e => {
+    if (e.target === e.currentTarget) {toggleModal()}
+  }
+
   const handleChangeTodo = (e) => {
     e.preventDefault();
     if (changeTodo.trim() === "") {
@@ -41,7 +55,7 @@ export default function Modal({
   };
 
   return createPortal(
-    <div className={style.overlay}>
+    <div className={style.overlay} onClick={closeModalByClickBackDrop}>
       <div className={style.modal}>
         <>
           <button
