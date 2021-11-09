@@ -1,0 +1,11 @@
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+}
+.item {
+  background-color: rgb(226, 90, 11);
+}
+.checked {
+  background-color: green;
+}
