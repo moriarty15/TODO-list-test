@@ -20,6 +20,7 @@ export default function TodoItem({
     <>
       <div className={style.contain}>
         <input
+          className={style.checkbox}
           type="checkbox"
           value={todos[index].completed}
           checked={todos[index].completed}
