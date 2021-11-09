@@ -26,8 +26,10 @@ export default function TodoItem({
           checked={todos[index].completed}
           onChange={handleChecked}
         />
-        <p>Дата создания: {date}</p>
-        <p className={style.text}> Todo: {text}</p>
+        <div className={style.text__contain}>
+          <p>Дата создания: {date}</p>
+          <p className={style.text}> Todo: {text}</p>
+        </div>
       </div>
       <div className={style.btn__contain}>
         <button
@@ -59,4 +61,4 @@ TodoItem.propTypes = {
   deleteTodo: PropTypes.func,
   todos: PropTypes.arrayOf(PropTypes.object),
   setTodos: PropTypes.func,
-}
+};

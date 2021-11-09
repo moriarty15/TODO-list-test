@@ -21,12 +21,12 @@
 }
 .change {
   composes: btn;
-  background-color: rgb(84, 200, 235);
+  background-color: rgb(19, 93, 212);
 }
 .change:hover,
 .change:focus,
 .change:active {
-  background-color: rgb(29, 167, 209);
+  background-color: rgb(8, 52, 124);
 }
 .delete {
   composes: btn;
@@ -41,4 +41,7 @@
   cursor: pointer;
   width: 20px;
   height: 20px;
+}
+.text__contain {
+  padding: 10px 20px;
 }
