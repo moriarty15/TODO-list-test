@@ -20,11 +20,21 @@
 }
 .change {
   composes: btn;
-  background-color: rgb(95, 218, 255);
+  background-color: rgb(84, 200, 235);
+}
+.change:hover,
+.change:focus,
+.change:active {
+  background-color: rgb(29, 167, 209);
 }
 .delete {
   composes: btn;
   background-color: rgb(255, 65, 65);
+}
+.delete:hover,
+.delete:focus,
+.delete:active {
+  background-color: rgb(233, 33, 33);
 }
 .checkbox {
   cursor: pointer;
