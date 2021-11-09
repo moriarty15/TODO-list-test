@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types"
 import TodoItem from "../TodoItem";
 import Modal from "../Modal/Modal";
 import style from "./TodoList.module.css";
@@ -66,4 +67,9 @@ export default function TodosList({
       )}
     </>
   );
+}
+
+TodosList.propTypes = {
+  todos: PropTypes.arrayOf(PropTypes.object),
+  setTodos: PropTypes.func,
 }

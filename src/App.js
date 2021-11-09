@@ -37,8 +37,8 @@ function App() {
           todos={todos}
           setTodos={setTodos}
         />
-        <p>Общее кол-во ToDo: {todos.length}</p>
-        <p>Кол-во выполненых ToDo: {countCompletedToDo.length}</p>
+        <p className="total">Общее кол-во ToDo: {todos.length}</p>
+        <p className="total">Кол-во выполненых ToDo: {countCompletedToDo.length}</p>
         <TodosList
           todos={todos}
           setTodos={setTodos}

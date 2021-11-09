@@ -6,6 +6,9 @@
   padding: 0 10px;
   margin: 0 auto;
 }
+.total {
+  text-align: center;
+}
 @media screen and (min-width: 544px) {
   .container {
     width: 500px;

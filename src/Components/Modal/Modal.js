@@ -1,4 +1,5 @@
 import { createPortal } from "react-dom";
+import PropTypes from "prop-types"
 import { useState } from "react";
 import style from "./Modal.module.css";
 const modalRoot = document.getElementById("modal-root");
@@ -77,4 +78,12 @@ export default function Modal({
     </div>,
     modalRoot
   );
+}
+
+Modal.propTypes = {
+  context: PropTypes.string,
+  currentId: PropTypes.number,
+  todos: PropTypes.arrayOf(PropTypes.object),
+  setTodos: PropTypes.func,
+  toggleModal: PropTypes.func,
 }

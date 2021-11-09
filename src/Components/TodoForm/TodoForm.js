@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types"
 import { v4 as uuidv4 } from "uuid";
 import style from "./TodoForm.module.css";
 
@@ -56,4 +57,9 @@ export default function TodoForm({
       </form>
     </>
   );
+}
+
+TodoForm.propTypes = {
+  todos: PropTypes.arrayOf(PropTypes.object),
+  setTodos: PropTypes.func,
 }

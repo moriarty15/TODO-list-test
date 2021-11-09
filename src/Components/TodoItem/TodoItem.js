@@ -1,4 +1,5 @@
 import style from "./TodoItem.module.css";
+import PropTypes from "prop-types";
 
 export default function TodoItem({
   changeTodo,
@@ -47,4 +48,14 @@ export default function TodoItem({
       </div>
     </>
   );
+}
+
+TodoItem.propTypes = {
+  data: PropTypes.string,
+  text: PropTypes.string,
+  index: PropTypes.number,
+  changeTodo: PropTypes.func,
+  deleteTodo: PropTypes.func,
+  todos: PropTypes.arrayOf(PropTypes.object),
+  setTodos: PropTypes.func,
 }
