@@ -35,18 +35,19 @@ export default function TodosList({
   return (
     <>
       <ul className={style.list}>
-        {arrTodo.length !== 0 &&
-          arrTodo.map((todo, i) => {
+        {completed.length !== 0 &&
+          completed.map(({text, id, completed, date}, i) => {
             return (
               <li
-                key={completed[i].id}
+                key={id}
                 className={
-                  (completed[i].complited && style.checked) || style.item
+                  (completed && style.checked) || style.item
                 }
               >
                 <TodoItem
-                  todo={todo}
-                  id={completed[i].id}
+                  date={date}
+                  text={text}
+                  id={id}
                   index={i}
                   changeTodo={changeTodo}
                   deleteTodo={deleteTodo}

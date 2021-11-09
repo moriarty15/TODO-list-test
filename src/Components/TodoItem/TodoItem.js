@@ -3,7 +3,8 @@ import style from "./TodoItem.module.css";
 export default function TodoItem({
   changeTodo,
   deleteTodo,
-  todo,
+  text,
+  date,
   id,
   index,
   completed,
@@ -12,7 +13,7 @@ export default function TodoItem({
   const handleChecked = (e) => {
     const newComplite = [...completed];
     for (let i = 0; i < newComplite.length; i += 1) {
-      if (newComplite[i].id === id) {
+      if (newComplite[i].id === index) {
         newComplite[index].complited = e.target.checked;
         setCompleted(newComplite);
         break;
@@ -27,10 +28,11 @@ export default function TodoItem({
         <input
           type="checkbox"
           value={id}
-          checked={completed[index].complited}
+          checked={completed}
           onChange={handleChecked}
         />
-        <p className={style.text}>{todo}</p>
+        <p>Дата создания: {date }</p>
+        <p className={style.text}> Todo: {text}</p>
       </div>
       <div className={style.btn__contain}>
         <button

@@ -2,7 +2,6 @@
   margin: 0;
 }
 .contain {
-  display: flex;
   min-width: 240px;
   min-height: 50px;
   padding: 5px;
