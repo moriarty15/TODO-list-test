@@ -8,7 +8,7 @@ const date = new Date();
 function App() {
   const [todos, setTodos] = useState(() => {
     return (
-      JSON.parse(window.localStorage.getItem("completed")) ?? [
+      JSON.parse(window.localStorage.getItem("todos")) ?? [
         {
           id: "firstTodo",
           completed: false,
