@@ -5,21 +5,14 @@ export default function TodoItem({
   deleteTodo,
   text,
   date,
-  id,
   index,
-  completed,
-  setCompleted,
+  todos,
+  setTodos,
 }) {
   const handleChecked = (e) => {
-    const newComplite = [...completed];
-    for (let i = 0; i < newComplite.length; i += 1) {
-      if (newComplite[i].id === index) {
-        newComplite[index].complited = e.target.checked;
-        setCompleted(newComplite);
-        break;
-      }
-    }
-    return;
+    const newComplite = [...todos];
+    newComplite[index].completed = e.target.checked;
+    return setTodos(newComplite);
   };
 
   return (
@@ -27,11 +20,11 @@ export default function TodoItem({
       <div className={style.contain}>
         <input
           type="checkbox"
-          value={id}
-          checked={completed}
+          value={todos[index].completed}
+          checked={todos[index].completed}
           onChange={handleChecked}
         />
-        <p>Дата создания: {date }</p>
+        <p>Дата создания: {date}</p>
         <p className={style.text}> Todo: {text}</p>
       </div>
       <div className={style.btn__contain}>
@@ -48,7 +41,6 @@ export default function TodoItem({
             return deleteTodo(index);
           }}
           className={style.delete}
-
         >
           Delete
         </button>

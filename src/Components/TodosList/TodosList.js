@@ -4,17 +4,15 @@ import Modal from "../Modal/Modal";
 import style from "./TodoList.module.css";
 
 export default function TodosList({
-  arrTodo,
-  setArrTodo,
-  completed,
-  setCompleted,
+  todos,
+  setTodos,
 }) {
   const [showModal, setShowModal] = useState(false);
   const [context, setContext] = useState("");
   const [currentId, setCurrentId] = useState("");
   const changeTodo = (todoId) => {
-    const targetTodo = arrTodo.find((todo, i) => todoId === i).split("M: ")[1];
-    setContext(targetTodo);
+    const targetTodo = todos.find(({ id }, i) => todoId === i);
+    setContext(targetTodo.text);
     setCurrentId(todoId);
     toggleModal();
   };
@@ -22,21 +20,21 @@ export default function TodosList({
     return setShowModal(!showModal);
   };
   const deleteTodo = (todoId) => {
-    const updateTodo = arrTodo.filter((todo, i) => {
+    const updateTodo = todos.filter((todo, i) => {
       return i !== todoId;
     });
-    setArrTodo(updateTodo);
+    setTodos(updateTodo);
    
-    const updateTodoComplited = completed.filter((todo, i) => {
+    const updateTodoComplited = todos.filter((todo, i) => {
       return i !== todoId
     })
-    setCompleted(updateTodoComplited)
+    setTodos(updateTodoComplited)
   };
   return (
     <>
       <ul className={style.list}>
-        {completed.length !== 0 &&
-          completed.map(({text, id, completed, date}, i) => {
+        {todos.length !== 0 &&
+          todos.map(({text, id, completed, date}, i) => {
             return (
               <li
                 key={id}
@@ -47,12 +45,11 @@ export default function TodosList({
                 <TodoItem
                   date={date}
                   text={text}
-                  id={id}
                   index={i}
                   changeTodo={changeTodo}
                   deleteTodo={deleteTodo}
-                  completed={completed}
-                  setCompleted={setCompleted}
+                  todos={todos}
+                  setTodos={setTodos}
                 />{" "}
               </li>
             );
@@ -62,8 +59,8 @@ export default function TodosList({
         <Modal
           context={context}
           currentId={currentId}
-          setArrTodo={setArrTodo}
-          arrTodo={arrTodo}
+          setTodos={setTodos}
+          todos={todos}
           toggleModal={toggleModal}
         />
       )}

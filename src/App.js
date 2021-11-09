@@ -3,51 +3,41 @@ import TodosList from "./Components/TodosList";
 import TodoForm from "./Components/TodoForm";
 import { useState, useEffect } from "react";
 
+const date = new Date();
+
 function App() {
-  const [completed, setCompleted] = useState(() => {
+  const [todos, setTodos] = useState(() => {
     return (
       JSON.parse(window.localStorage.getItem("completed")) ?? [
-        { id: "firstTodo", completed: false },
+        {
+          id: "firstTodo",
+          completed: false,
+          text: "create you first ToDo",
+          date: date.toLocaleString("en-US"),
+        },
       ]
     );
   });
-  const [todo, setTodo] = useState("");
-  const [arrTodo, setArrTodo] = useState(() => {
-    return (
-      JSON.parse(window.localStorage.getItem("todos")) ?? [
-        "create you first ToDO",
-      ]
-    );
-  });
 
   useEffect(() => {
-    window.localStorage.setItem("todos", JSON.stringify(arrTodo));
-  }, [arrTodo]);
+    window.localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   useEffect(() => {
-    window.localStorage.setItem("completed", JSON.stringify(completed));
-  }, [completed]);
-
-  useEffect(() => {
-    if (todo === "") return;
-    setArrTodo([...arrTodo, todo]);
-  }, [todo]);
+    window.localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <div className="App">
       <div className="container">
         <h1 className="title">ToDo App</h1>
         <TodoForm
-          setTodo={setTodo}
-          arrTodo={arrTodo}
-          completed={completed}
-          setCompleted={setCompleted}
+          todos={todos}
+          setTodos={setTodos}
         />
         <TodosList
-          arrTodo={arrTodo}
-          setArrTodo={setArrTodo}
-          completed={completed}
-          setCompleted={setCompleted}
+          todos={todos}
+          setTodos={setTodos}
         />
       </div>
     </div>
