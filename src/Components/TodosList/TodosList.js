@@ -6,8 +6,8 @@ import style from "./TodoList.module.css";
 export default function TodosList({
   arrTodo,
   setArrTodo,
-  complieted1,
-  setComplited1,
+  completed,
+  setCompleted,
 }) {
   const [showModal, setShowModal] = useState(false);
   const [context, setContext] = useState("");
@@ -22,11 +22,15 @@ export default function TodosList({
     return setShowModal(!showModal);
   };
   const deleteTodo = (todoId) => {
-    const filterTodo = arrTodo.filter((todo, i) => {
+    const updateTodo = arrTodo.filter((todo, i) => {
       return i !== todoId;
     });
-    complieted1.splice(todoId, 1);
-    setArrTodo(filterTodo);
+    setArrTodo(updateTodo);
+   
+    const updateTodoComplited = completed.filter((todo, i) => {
+      return i !== todoId
+    })
+    setCompleted(updateTodoComplited)
   };
   return (
     <>
@@ -34,21 +38,22 @@ export default function TodosList({
         {arrTodo.length !== 0 &&
           arrTodo.map((todo, i) => {
             return (
-              <>
-                <li
-                  key={todo}
-                  className={(complieted1[i] && style.checked) || style.item}
-                >
-                  <TodoItem
-                    todo={todo}
-                    i={i}
-                    changeTodo={changeTodo}
-                    deleteTodo={deleteTodo}
-                    complieted1={complieted1}
-                    setComplited1={setComplited1}
-                  />{" "}
-                </li>
-              </>
+              <li
+                key={completed[i].id}
+                className={
+                  (completed[i].complited && style.checked) || style.item
+                }
+              >
+                <TodoItem
+                  todo={todo}
+                  id={completed[i].id}
+                  index={i}
+                  changeTodo={changeTodo}
+                  deleteTodo={deleteTodo}
+                  completed={completed}
+                  setCompleted={setCompleted}
+                />{" "}
+              </li>
             );
           })}
       </ul>

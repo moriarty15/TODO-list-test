@@ -1,6 +1,8 @@
 import { useState } from "react/cjs/react.development";
+import { v4 as uuidv4 } from 'uuid';
+import style from "./TodoForm.module.css"
 
-export default function TodoForm({ setTodo, arrTodo,setComplited1, complieted1 }) {
+export default function TodoForm({ setTodo, arrTodo,setCompleted, completed }) {
   const [newTodo, setNewTodo] = useState("");
   const createNewTodo = (e) => {
     const createTodo = e.target.value;
@@ -24,7 +26,7 @@ export default function TodoForm({ setTodo, arrTodo,setComplited1, complieted1 }
 
     const date = new Date();
     setTodo(`${date.toLocaleString("en-US")}: ` + newTodo);
-    setComplited1([...complieted1, false])
+    setCompleted([...completed, {completed: false, id: uuidv4()}])
     reset();
   };
   const reset = () => {
@@ -32,15 +34,16 @@ export default function TodoForm({ setTodo, arrTodo,setComplited1, complieted1 }
   };
   return (
     <>
-      <form onSubmit={handleCreateTodo}>
-        Change you first todo
+      <form onSubmit={handleCreateTodo} className={style.form}>
+        <p className={style.text}>Create todo:</p>        
         <textarea
+          className={style.textarea}
           onChange={createNewTodo}
           value={newTodo}
           type="text"
           placeholder="input TODO"
         ></textarea>
-        <button>Create Todo</button>
+        <button className={style.btn}>Create Todo</button>
       </form>
     </>
   );

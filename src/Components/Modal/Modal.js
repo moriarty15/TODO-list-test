@@ -38,16 +38,30 @@ export default function Modal({
     <div className={style.overlay}>
       <div className={style.modal}>
         <>
+          <button onClick={() => { toggleModal() }}  className={style.close}>
+            <svg
+            width="40"
+            height="40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M29.667 12.88 27.787 11l-7.454 7.453L12.88 11 11 12.88l7.453 7.453L11 27.787l1.88 1.88 7.453-7.454 7.454 7.454 1.88-1.88-7.454-7.454 7.454-7.453Z"
+              fill="#212121"
+            />
+          </svg>
+          </button>
           <form onSubmit={handleChangeTodo}>
-            Change todo
+            <p  className={style.text}>Change todo</p>            
             <textarea
+          className={style.textarea}
+              
               onChange={createNewTodo}
               value={changeTodo}
               type="text"
               placeholder="input TODO"
             ></textarea>
-            <button
-            //   onClick={handleChangeTodo}
+            <button className={style.btn}
             >
               Change Todo
             </button>
